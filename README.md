@@ -1,5 +1,5 @@
 # ubuntu_openvswitch
-## Provides openvswitch debian packages build on Ubuntu 14.04.
+## Provides openvswitch 2.3.1 debian packages build on Ubuntu 14.04.
 
 ### The following command will copy the debian packages of openvswitch into ~/openvswitch:
 
