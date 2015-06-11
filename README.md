@@ -9,3 +9,5 @@
 
     $ apt-get install bridge-utils
     $ dpkg -i openvswitch-common_2.3.1-1_amd64.deb openvswitch-switch_2.3.1-1_amd64.deb
+
+### Very handy for docker multi host networking as described [here](http://wiredcraft.com/blog/multi-host-docker-network/)!!!
