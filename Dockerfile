@@ -11,17 +11,15 @@ WORKDIR /
 ENV OVS_VERSION="openvswitch-2.3.1"
 
 # Install build dependencies
-RUN apt-get install -y --force-yes \
-    libssl1.0.0=1.0.1f-1ubuntu2 \
-    libssl-dev \
-    libc6=2.19-0ubuntu6 \
-    libc6-dev \
+RUN apt-get update \
+&& apt-get install -y \
     build-essential \
     fakeroot \
     debhelper \
     autoconf \
     automake \
     bzip2 \
+    libssl-dev \
     openssl \
     graphviz \
     python-all \
@@ -31,8 +29,8 @@ RUN apt-get install -y --force-yes \
     python-twisted-conch \
     libtool \
     wget \
-&& apt-get autoclean -y --force-yes \
-&& apt-get autoremove -y --force-yes
+&& apt-get autoclean -y \
+&& apt-get autoremove -y
 
 # Fetch the latest archive
 RUN wget http://openvswitch.org/releases/${OVS_VERSION}.tar.gz \
