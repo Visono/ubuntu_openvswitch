@@ -8,7 +8,7 @@ USER root
 WORKDIR /
 
 # OpenVSwitch version
-ENV OVS_VERSION="openvswitch-2.3.1"
+ENV OVS_VERSION="openvswitch-2.3.2"
 
 # Install build dependencies
 RUN apt-get update \
@@ -32,13 +32,11 @@ RUN apt-get update \
 && apt-get autoclean -y \
 && apt-get autoremove -y
 
-# Fetch the latest archive
+# Fetch the latest archive and build without check in parallel
 RUN wget http://openvswitch.org/releases/${OVS_VERSION}.tar.gz \
 && tar xzvf ${OVS_VERSION}.tar.gz \
-&& rm ${OVS_VERSION}.tar.gz
-
-# Build without check in parallel
-RUN cd ${OVS_VERSION} && DEB_BUILD_OPTIONS='parallel=8 nocheck' fakeroot debian/rules binary \
+&& rm ${OVS_VERSION}.tar.gz \
+&& cd ${OVS_VERSION} && DEB_BUILD_OPTIONS='parallel=8 nocheck' fakeroot debian/rules binary \
 && mkdir /${OVS_VERSION}-build
 
 # Adding scripts
